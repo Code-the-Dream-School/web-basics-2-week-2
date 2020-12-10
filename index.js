@@ -1,16 +1,20 @@
 
+/*
 //------------------------ Question 1---------------------------
 //Write a function that ask the user for two numbers and return the product of them. But the challenge here is that you can't use the operator * (you can't make the product)
 //hint: multiplication is a sequence of sums
-
+*/
  //@param {number} number1
  //@param {number} number2
  //@return {number} product
-const multiplication = () => {
-  return
+const multiplication = (number1,number2) => {
+ let num=number1
+    for(var i = 1; i <number2; i++){
+       num +=number1; // increments itself
+       }
+    return num;
 }
-
-const answer1 = multiplication()
+const answer1 = multiplication(2,5)
 console.log('answer1', answer1)
 
 const htmlTarget = document.getElementById('a-1')
@@ -25,12 +29,37 @@ htmlTarget.innerHTML = answer1
 
 //@param {string}
 //@return {character} => array of characters
+let newConsenants = [];
+  let newvaowels = [];
 vowelOrConsonant = () => {
-  return
+  let userInputOfWords = prompt('Please enter one word. ');
+
+  const nputString = userInputOfWords.toLowerCase();
+  const vowels = ["a", "e", "i", "o", "u"];
+  
+  for (var i = 0; i < nputString.length; i++) {
+    if (vowels.indexOf(nputString[i]) !== -1) { 
+      newvaowels.push(nputString[i]);
+  // console.log(newvaowels);
+    } else {
+      newConsenants.push(nputString[i]);
+      //console.log(newConsenants)
+    }
+  }
+  const userChoose =prompt("do you need a vowel or a consonant first?")
+  let orderChoose=[]
+if(userChoose ==="vowel"){
+orderChoose=[...newvaowels,...newConsenants]
+  return `depend up on your choose here is the arry having vowels first then consonant ${orderChoose}`
+  
+}else{
+  orderChoose=[...newConsenants,...newvaowels]
+  return `depend up on your choose here is the arry having consonant first then vowels ${orderChoose}`
+
 }
 
-const answer2 = vowelOrConsonant()
-
+  }
+  const answer2=vowelOrConsonant();
 const htmlTarget2 = document.getElementById('a-2')
 htmlTarget2.innerHTML = answer2
 
@@ -45,11 +74,29 @@ htmlTarget2.innerHTML = answer2
 //where: name, saves the name of the player. Lives, represents the remaining oportunities each time the player fails. Fail_numbers, is an array of numbers that stores the fail numbers the player has used
 
 //@return {string} win / gameOver => the string that says if the user wasted the three oportunities showing the fails numbers or the name if the player wins
-guessTheNumber  = () => {
-  return
-}
+//guessTheNumber  = () => {
+  const name=prompt("enter your player  name");
 
-const answer3 = guessTheNumber()
+let counter=0;
+guessTheNumber=(min, max)=> {
+  return Math.floor(Math.random() * (max - min) + min);;
+}
+//let rund =randomInteger(10,50)
+
+let answer3 = guessTheNumber(10,50)
+  while(counter <3){
+    let gussedNum=prompt("gusse a number");
+counter +=1;
+if(gussedNum==answer3){
+  alert(`Oh waw ${name}you got it,the number is${rund}`)
+  break;
+}if(counter ==3){
+alert( `Oops ! ${name} you reach max limet of tryles ! the random number is ${answer3}`);
+break;
+}
+  }
+//}
+
 
 const htmlTarget3 = document.getElementById('a-3')
 htmlTarget3.innerHTML = answer3
