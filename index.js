@@ -33,7 +33,6 @@ let newConsenants = [];
   let newvaowels = [];
 vowelOrConsonant = () => {
   let userInputOfWords = prompt('Please enter one word. ');
-
   const nputString = userInputOfWords.toLowerCase();
   const vowels = ["a", "e", "i", "o", "u"];
   
@@ -43,18 +42,17 @@ vowelOrConsonant = () => {
   // console.log(newvaowels);
     } else {
       newConsenants.push(nputString[i]);
-      //console.log(newConsenants)
     }
   }
-  const userChoose =prompt("do you need a vowel or a consonant first?")
+  const userChoose =prompt("How do you want to order your output ? If you need Vowel first enter Vowel,if you need consonant enter consenant ?")
   let orderChoose=[]
 if(userChoose ==="vowel"){
 orderChoose=[...newvaowels,...newConsenants]
-  return `depend up on your choose here is the arry having vowels first then consonant ${orderChoose}`
+  return `Depend up on your choose here is the arry having vowels first then consonant   ${orderChoose}`
   
 }else{
   orderChoose=[...newConsenants,...newvaowels]
-  return `depend up on your choose here is the arry having consonant first then vowels ${orderChoose}`
+  return `Depend up on your choose here is the arry having consonant first then vowels     ${orderChoose}`
 
 }
 
@@ -74,14 +72,11 @@ htmlTarget2.innerHTML = answer2
 //where: name, saves the name of the player. Lives, represents the remaining oportunities each time the player fails. Fail_numbers, is an array of numbers that stores the fail numbers the player has used
 
 //@return {string} win / gameOver => the string that says if the user wasted the three oportunities showing the fails numbers or the name if the player wins
-//guessTheNumber  = () => {
-  const name=prompt("enter your player  name");
-
+  const name=prompt("Enter your player  name");
 let counter=0;
 guessTheNumber=(min, max)=> {
   return Math.floor(Math.random() * (max - min) + min);;
 }
-//let rund =randomInteger(10,50)
 
 let answer3 = guessTheNumber(10,50)
   while(counter <3){
@@ -95,9 +90,6 @@ alert( `Oops ! ${name} you reach max limet of tryles ! the random number is ${an
 break;
 }
   }
-//}
-
-
 const htmlTarget3 = document.getElementById('a-3')
 htmlTarget3.innerHTML = answer3
 
@@ -108,29 +100,55 @@ htmlTarget3.innerHTML = answer3
 // The second one sorting the array of objects based on the author property, the third one based on the library property. finally, the return value has to be the string sorted of the property selected separeted with a semicolon. Remember you have to sort all of the array based on the selected property
 //example: if the user select sorting by title the return value must be: "Mockingjay: The Final Book of The Hunger Games; Walter Isaacson; The Road Ahead"
 
+
 sort = () => {
 
-  var library = [
-   {
-       title:  'The Road Ahead',
-       author: 'Bill Gates',
-       libraryID: 1254
-   },
-   {
-       title: 'Walter Isaacson',
-       author: 'Steve Jobs',
-       libraryID: 4264
-   },
-   {
-       title: 'Mockingjay: The Final Book of The Hunger Games',
-       author: 'Suzanne Collins',
-       libraryID: 3245
-   }];
+    var library = [
+     {
+         title:  'The Road Ahead',
+         author: 'Bill Gates',
+         libraryID: 1254
+     },
+     {
+         title: 'Walter Isaacson',
+         author: 'Steve Jobs',
+         libraryID: 4264
+     },
+     {
+         title: 'Mockingjay: The Final Book of The Hunger Games',
+         author: 'Suzanne Collins',
+         libraryID: 3245
+     }];
+  
+  
+  const selectedValue=prompt("How do you want to sort your array of object using title,author or  libraryID")
+  const sortedData=[];
+  for(let i=0;i<library.length;i++){
+    if(selectedValue ==="title"){
+  sortedData.push(library[i]["title"])
+  sortedData.sort((a,b) => b.length - a.length)
+  //console.log(sortedData);
+    }
+    else if(selectedValue ==="author"){
+      sortedData.push(library[i]["author"])
+      sortedData.sort((a,b) => b.length - a.length)
+     // console.log(sortedData);
+    
+  }else if(selectedValue ==="libraryID"){
+    sortedData.push(library[i]["libraryID"])
+    sortedData.sort((a,b) => b.length - a.length)
+   // console.log(sortedData);
+  
+  }else{
+    return `please select one from option`
+  
+  }
+    
+  }
+    return  `Here is your sort Data depend up on your selection ${sortedData}`;
+  }
 
-  return
-}
-
-const answer4 = sort()
+const answer4 = sort();
 
 const htmlTarget4 = document.getElementById('a-4')
 htmlTarget4.innerHTML = answer4
