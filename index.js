@@ -145,7 +145,7 @@ sort = () => {
   }
     
   }
-    return  `Here is your sort Data depend up on your selection ${sortedData}`;
+    return  `Here is your sort Datadepend up on your selection ${sortedData.join(",")}`;
   }
 
 const answer4 = sort();
